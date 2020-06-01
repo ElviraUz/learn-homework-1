@@ -14,12 +14,21 @@
 
 """
 
-def main():
-    """
-    Эта функция вызывается автоматически при запуске скрипта в консоли
-    В ней надо заменить pass на ваш код
-    """
-    pass
+user_age=int(input("Введите ваш возраст: "))
+
+def walkoflife (age):
+    if age <= 6:
+        print ("Детский сад")
+    elif 7 <= age < 17:
+        print ("Школа")
+    elif 18 <= age < 24:
+        print ("Институт")
+    elif 25 <= age < 70:
+        print ("Работа")
+    elif 71 <= age < 90:
+        print ("Пенсия")
+    else:
+      print ("Наслаждайся жизнью")
 
 if __name__ == "__main__":
-    main()
+  walkoflife(user_age)

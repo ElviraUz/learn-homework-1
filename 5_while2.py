@@ -14,12 +14,24 @@
     Программа: Программирую
     
 """
+dictionary = {
+  "Как дела": "Хорошо!",
+  "Что делаешь?": "Программирую",
+  "Есть ли жизнь на Марсе?":"42",
+  "Название нашей планеты":"Земля"
+  }
+  
+def ask_user_dict(dictionary):
 
-def ask_user():
-    """
-    Замените pass на ваш код
-    """
-    pass
-    
+  while True:
+    question = input("Пользователь: ")
+    if question in  dictionary:
+      print (f"Программа: {dictionary[question]}")
+    elif question == "пока":
+      print("До свидания!")
+      break
+    else:
+        print ("Программа:Введите другой вопрос")
+
 if __name__ == "__main__":
-    ask_user()
+    ask_user_dict(dictionary)

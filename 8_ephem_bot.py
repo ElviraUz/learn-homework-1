@@ -13,8 +13,11 @@
 
 """
 import logging
+import ephem
 
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
+from ephem import constellation
+
 
 logging.basicConfig(format='%(name)s - %(levelname)s - %(message)s',
                     level=logging.INFO,
@@ -37,18 +40,26 @@ def greet_user(bot, update):
     update.message.reply_text(text)
 
 
-def talk_to_me(bot, update):
+def talk_to_me( , update):
     user_text = update.message.text 
     print(user_text)
     update.message.reply_text(user_text)
- 
+
+def constellation_planet (bot,update):
+  platent_u = "/planet Mars"
+  planet = platent_u.split()[1].capitalize()
+
+  if planet=="Mars":
+    search_planet = ephem.Mars('2020/05/26')
+    ephem.constellation(search_planet)
 
 def main():
-    mybot = Updater("КЛЮЧ, КОТОРЫЙ НАМ ВЫДАЛ BotFather", request_kwargs=PROXY)
+    mybot = Updater("1194195192:AAGKl_omijTQf_27flOlb1oA21T1uTpwQBo", request_kwargs=PROXY)
     
     dp = mybot.dispatcher
     dp.add_handler(CommandHandler("start", greet_user))
     dp.add_handler(MessageHandler(Filters.text, talk_to_me))
+    dp.add_handler(CommandHandler(("planet",constellation_planet))
     
     mybot.start_polling()
     mybot.idle()
